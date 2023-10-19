@@ -4,15 +4,16 @@ local act = wezterm.action
 local config = {
   enable_tab_bar = true,
   -- window_decorations = "TITLE|RESIZE",
-  font = wezterm.font("Liga SFMono Nerd Font"),
+  font = wezterm.font("Liga SFMono Nerd Font", { weight = 600 }),
   font_size = 13.0,
   line_height = 0.99,
   hide_tab_bar_if_only_one_tab = true,
   adjust_window_size_when_changing_font_size = false,
   skip_close_confirmation_for_processes_named = {},
   native_macos_fullscreen_mode = false,
+  disable_default_key_bindings = false,
   keys = {
-    { key = "f", mods = "CMD", action = act.ToggleFullScreen },
+    { key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
     { key = "d", mods = "CMD", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
     { key = "d", mods = "CMD|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "w", mods = "CMD", action = act.CloseCurrentPane({ confirm = true }) },
@@ -22,7 +23,6 @@ local config = {
     { key = "DownArrow", mods = "ALT|CMD", action = act.ActivatePaneDirection("Down") },
   },
   send_composed_key_when_left_alt_is_pressed = true,
-  send_composed_key_when_right_alt_is_pressed = false,
   color_scheme = "Min",
   color_schemes = {
     ["Min"] = {
