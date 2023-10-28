@@ -11,6 +11,7 @@ c.font_size = 13.0
 c.line_height = 0.99
 c.hide_tab_bar_if_only_one_tab = true
 c.use_fancy_tab_bar = false
+c.show_tab_index_in_tab_bar = true
 c.tab_max_width = 32
 c.adjust_window_size_when_changing_font_size = false
 c.skip_close_confirmation_for_processes_named = {}
@@ -37,10 +38,7 @@ c.color_schemes = {
       active_tab = {
         bg_color = "#a0a0a0",
         fg_color = "#000000",
-        -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
         intensity = "Normal",
-
-        -- Specify whether you want "None", "Single" or "Double" underline for
         underline = "None",
         italic = false,
         strikethrough = false,
@@ -93,6 +91,6 @@ c.window_frame = {
   -- button_hover_fg = "#ffffff",
   -- button_hover_bg = "#3b3052",
 }
-c.window_padding = { left = 3, right = 3, top = 9, bottom = 3 }
+c.window_padding = { left = 9, right = 3, top = 9, bottom = 3 }
 
 return c
