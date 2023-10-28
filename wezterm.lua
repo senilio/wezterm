@@ -1,7 +1,5 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 local c = wezterm.config_builder()
 
 c.enable_tab_bar = true
@@ -18,16 +16,34 @@ c.skip_close_confirmation_for_processes_named = {}
 c.native_macos_fullscreen_mode = false
 c.disable_default_key_bindings = false
 c.keys = {
+  -- Misc
   { key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
+
+  -- Splits
   { key = "d", mods = "CMD", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "d", mods = "CMD|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "w", mods = "CMD", action = act.CloseCurrentPane({ confirm = true }) },
+  -- Navigate panes
   { key = "LeftArrow", mods = "ALT|CMD", action = act.ActivatePaneDirection("Left") },
   { key = "RightArrow", mods = "ALT|CMD", action = act.ActivatePaneDirection("Right") },
   { key = "UpArrow", mods = "ALT|CMD", action = act.ActivatePaneDirection("Up") },
   { key = "DownArrow", mods = "ALT|CMD", action = act.ActivatePaneDirection("Down") },
+
+  -- Move Tabs
   { key = "LeftArrow", mods = "SHIFT|CTRL", action = act.MoveTabRelative(-1) },
   { key = "RightArrow", mods = "SHIFT|CTRL", action = act.MoveTabRelative(0) },
+
+  -- Organize panes
+  { key = "LeftArrow", mods = "SHIFT|CMD", action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
+  { key = "RightArrow", mods = "SHIFT|CMD", action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
+  { key = "UpArrow", mods = "SHIFT|CMD", action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
+  { key = "DownArrow", mods = "SHIFT|CMD", action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
+
+  -- Resize panes
+  { key = "LeftArrow", mods = "CMD", action = act.AdjustPaneSize({ "Left", 5 }) },
+  { key = "RightArrow", mods = "CMD", action = act.AdjustPaneSize({ "Right", 5 }) },
+  { key = "UpArrow", mods = "CMD", action = act.AdjustPaneSize({ "Up", 5 }) },
+  { key = "DownArrow", mods = "CMD", action = act.AdjustPaneSize({ "Down", 5 }) },
 }
 c.send_composed_key_when_left_alt_is_pressed = true
 c.color_scheme = "Min"
