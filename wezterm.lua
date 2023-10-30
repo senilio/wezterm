@@ -31,7 +31,7 @@ end)
 
 c.enable_tab_bar = true
 c.window_decorations = "TITLE|RESIZE"
-c.font = wezterm.font("Liga SFMono Nerd Font", { weight = 600 })
+c.font = wezterm.font("Liga SFMono Nerd Font", { weight = 400 })
 c.font_size = 13.0
 c.line_height = 0.99
 c.hide_tab_bar_if_only_one_tab = true
@@ -76,35 +76,7 @@ c.send_composed_key_when_left_alt_is_pressed = true
 c.color_scheme = "Min"
 c.color_schemes = {
   ["Min"] = {
-    tab_bar = {
-      background = "#111111",
-      active_tab = {
-        bg_color = "#a0a0a0",
-        fg_color = "#000000",
-        intensity = "Normal",
-        underline = "None",
-        italic = false,
-        strikethrough = false,
-      },
-      inactive_tab = {
-        bg_color = "#151515",
-        fg_color = "#909090",
-      },
-      inactive_tab_hover = {
-        bg_color = "#353535",
-        fg_color = "#909090",
-        italic = true,
-      },
-      new_tab = {
-        bg_color = "#555555",
-        fg_color = "#808080",
-      },
-      new_tab_hover = {
-        bg_color = "#666666",
-        fg_color = "#fafafa",
-        italic = true,
-      },
-    },
+    tab_bar = { background = "#111111" },
     foreground = "#ffffff",
     background = "#000010",
     cursor_bg = "#cccccc",
@@ -113,7 +85,6 @@ c.color_schemes = {
   },
 }
 c.window_frame = {
-  -- font_size = 13.0,
   border_left_width = "1px",
   border_right_width = "1px",
   border_bottom_height = "1px",
@@ -123,17 +94,7 @@ c.window_frame = {
   border_right_color = "#232323",
   border_bottom_color = "#232323",
   border_top_color = "#232323",
-  -- inactive_titlebar_bg = "#353535",
-  -- active_titlebar_bg = "#2b2042",
-  -- inactive_titlebar_fg = "#cccccc",
-  -- active_titlebar_fg = "#ffffff",
-  -- inactive_titlebar_border_bottom = "#2b2042",
-  -- active_titlebar_border_bottom = "#2b2042",
-  -- button_fg = "#cccccc",
-  -- button_bg = "#2b2042",
-  -- button_hover_fg = "#ffffff",
-  -- button_hover_bg = "#3b3052",
 }
-c.window_padding = { left = 9, right = 3, top = 9, bottom = 3 }
+c.window_padding = { left = 4, right = 1, top = 1, bottom = 4 }
 
 return c
