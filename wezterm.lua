@@ -2,41 +2,40 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local c = wezterm.config_builder()
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local foreground = "black"
-  local main_color = wezterm.color.parse("#cccccc")
-  local edge_background = main_color:darken(0.5)
-  local background = main_color:darken(0.5)
-  if tab.is_active then
-    background = main_color
-  end
-
-  wezterm.log_warn(wezterm.gui.screens().virtual_width)
-
-  local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-  local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-
-  local title = "  " .. tab.tab_index + 1 .. "  "
-
-  local tab_title = {
-    { Background = { Color = background } },
-    { Foreground = { Color = foreground } },
-    { Text = title },
-    { Background = { Color = foreground } },
-    { Foreground = { Color = background } },
-    { Text = SOLID_RIGHT_ARROW .. "  " },
-  }
-  return tab_title
-end)
+-- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+--   local foreground = "black"
+--   local main_color = wezterm.color.parse("#cccccc")
+--   local edge_background = main_color:darken(0.5)
+--   local background = main_color:darken(0.5)
+--   if tab.is_active then
+--     background = main_color
+--   end
+--
+--   wezterm.log_warn(wezterm.gui.screens().virtual_width)
+--
+--   local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+--   local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+--
+--   local title = "  " .. tab.tab_index + 1 .. "  "
+--
+--   local tab_title = {
+--     { Background = { Color = background } },
+--     { Foreground = { Color = foreground } },
+--     { Text = title },
+--     { Background = { Color = foreground } },
+--     { Foreground = { Color = background } },
+--     { Text = SOLID_RIGHT_ARROW .. "  " },
+--   }
+--   return tab_title
+-- end)
 
 c.enable_tab_bar = true
-c.window_decorations = "TITLE|RESIZE"
+c.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 c.font = wezterm.font("Liga SFMono Nerd Font", { weight = 400 })
 c.font_size = 13.0
 c.line_height = 0.99
-c.hide_tab_bar_if_only_one_tab = true
-c.use_fancy_tab_bar = false
-c.show_tab_index_in_tab_bar = true
+c.hide_tab_bar_if_only_one_tab = false
+c.use_fancy_tab_bar = true
 c.tab_max_width = 32
 c.adjust_window_size_when_changing_font_size = false
 c.skip_close_confirmation_for_processes_named = {}
@@ -95,6 +94,18 @@ c.window_frame = {
   border_bottom_color = "#232323",
   border_top_color = "#232323",
 }
-c.window_padding = { left = 4, right = 1, top = 1, bottom = 4 }
+c.window_padding = { left = 4, right = 1, top = 3, bottom = 4 }
+c.window_frame = {
+  font = wezterm.font({ family = "Roboto", weight = "Bold" }),
+  font_size = 12.0,
+  active_titlebar_bg = "#141414",
+  inactive_titlebar_bg = "#222222",
+}
+
+c.colors = {
+  tab_bar = {
+    inactive_tab_edge = "#232323",
+  },
+}
 
 return c
