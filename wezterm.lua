@@ -33,6 +33,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   local title = #tab.tab_title > 0 and tab.tab_title or tab.active_pane.title
 
   return {
+    -- { Foreground = { Color = "#444444" } },
     { Text = SUB_IDX[tab.tab_index + 1] },
   }
 end)
@@ -107,23 +108,23 @@ c.color_schemes = {
 c.colors = {
   tab_bar = {
     inactive_tab_edge = "#000000",
-    active_tab = { bg_color = "#222222", fg_color = "#4a4a4a" },
-    inactive_tab = { bg_color = "#181818", fg_color = "#313131" },
+    active_tab = { bg_color = "#151515", fg_color = "#414141" },
+    inactive_tab = { bg_color = "#111111", fg_color = "#2a2a2a" },
   },
 }
 
 c.window_padding = { left = 4, right = 1, top = 3, bottom = 4 }
 c.window_frame = {
-  -- font = wezterm.font({ family = "Roboto", weight = "Bold" }),
-  font_size = 12.0,
-  active_titlebar_bg = "#1a1a1a",
+  font = wezterm.font({ family = "Roboto", weight = "Bold" }),
+  font_size = 11.0,
+  active_titlebar_bg = "#0c0c0c",
   inactive_titlebar_bg = "#222222",
   border_left_width = "1px",
   border_right_width = "1px",
   border_bottom_height = "1px",
   border_top_height = "1px",
-  border_left_color = "#333333",
-  border_right_color = "#333333",
+  border_left_color = "#1a1a1a",
+  border_right_color = "#1a1a1a",
   border_bottom_color = "#333333",
   border_top_color = "#333333",
 }
