@@ -2,7 +2,41 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local c = wezterm.config_builder()
 
-c.enable_tab_bar = true
+local SUB_IDX = {
+  "₁",
+  "₂",
+  "₃",
+  "₄",
+  "₅",
+  "₆",
+  "₇",
+  "₈",
+  "₉",
+  "₁₀",
+  "₁₁",
+  "₁₂",
+  "₁₃",
+  "₁₄",
+  "₁₅",
+  "₁₆",
+  "₁₇",
+  "₁₈",
+  "₁₉",
+  "₂₀",
+}
+
+local SOLID_LEFT_ARROW = utf8.char(0xe0ba)
+local SOLID_LEFT_MOST = utf8.char(0x2588)
+local SOLID_RIGHT_ARROW = utf8.char(0xe0bc)
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+  local title = #tab.tab_title > 0 and tab.tab_title or tab.active_pane.title
+
+  return {
+    { Text = SUB_IDX[tab.tab_index + 1] },
+  }
+end)
+
 c.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
 c.font = wezterm.font({
@@ -10,14 +44,18 @@ c.font = wezterm.font({
   stretch = "Expanded",
   weight = 500,
 })
-c.show_new_tab_button_in_tab_bar = false
+
 c.use_cap_height_to_scale_fallback_fonts = true
 c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 c.font_size = 13.0
-c.line_height = 0.99
+c.line_height = 1
+
+c.enable_tab_bar = true
 c.hide_tab_bar_if_only_one_tab = false
 c.use_fancy_tab_bar = true
--- c.tab_max_width = 32
+c.show_new_tab_button_in_tab_bar = false
+c.tab_max_width = 32
+
 c.adjust_window_size_when_changing_font_size = false
 c.skip_close_confirmation_for_processes_named = {}
 c.native_macos_fullscreen_mode = false
@@ -54,6 +92,7 @@ c.keys = {
   { key = "DownArrow", mods = "CMD", action = act.AdjustPaneSize({ "Down", 5 }) },
 }
 c.send_composed_key_when_left_alt_is_pressed = true
+
 c.color_scheme = "Min"
 c.color_schemes = {
   ["Min"] = {
@@ -65,9 +104,17 @@ c.color_schemes = {
     brights = { "#676767", "#ff6d67", "#5ff967", "#fefb67", "#6871ff", "#ff76ff", "#5ffdff", "#fffefe" },
   },
 }
+c.colors = {
+  tab_bar = {
+    inactive_tab_edge = "#000000",
+    active_tab = { bg_color = "#222222", fg_color = "#777777" },
+    inactive_tab = { bg_color = "#181818", fg_color = "#313131" },
+  },
+}
+
 c.window_padding = { left = 4, right = 1, top = 3, bottom = 4 }
 c.window_frame = {
-  font = wezterm.font({ family = "Roboto", weight = "Bold" }),
+  -- font = wezterm.font({ family = "Roboto", weight = "Bold" }),
   font_size = 12.0,
   active_titlebar_bg = "#1a1a1a",
   inactive_titlebar_bg = "#222222",
@@ -84,20 +131,6 @@ c.window_frame = {
 c.inactive_pane_hsb = {
   saturation = 1.0,
   brightness = 0.7,
-}
-
-c.colors = {
-  tab_bar = {
-    inactive_tab_edge = "#000000",
-    active_tab = {
-      bg_color = "#282828",
-      fg_color = "#bbbbbb",
-    },
-    inactive_tab = {
-      bg_color = "#111111",
-      fg_color = "#555555",
-    },
-  },
 }
 
 return c
