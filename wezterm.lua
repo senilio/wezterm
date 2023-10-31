@@ -4,16 +4,25 @@ local c = wezterm.config_builder()
 
 c.enable_tab_bar = true
 c.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
-c.font = wezterm.font("Liga SFMono Nerd Font", { weight = 400 })
+
+c.font = wezterm.font({
+  family = "Liga SFMono Nerd Font",
+  stretch = "Expanded",
+  weight = 500,
+})
+c.show_new_tab_button_in_tab_bar = false
+c.use_cap_height_to_scale_fallback_fonts = true
+c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 c.font_size = 13.0
 c.line_height = 0.99
 c.hide_tab_bar_if_only_one_tab = false
 c.use_fancy_tab_bar = true
-c.tab_max_width = 32
+-- c.tab_max_width = 32
 c.adjust_window_size_when_changing_font_size = false
 c.skip_close_confirmation_for_processes_named = {}
 c.native_macos_fullscreen_mode = false
 c.disable_default_key_bindings = false
+
 c.keys = {
   -- Misc
   { key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
@@ -39,8 +48,8 @@ c.keys = {
   { key = "DownArrow", mods = "SHIFT|CMD", action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
 
   -- Resize panes
-  { key = "LeftArrow", mods = "CMD", action = act.AdjustPaneSize({ "Left", 5 }) },
-  { key = "RightArrow", mods = "CMD", action = act.AdjustPaneSize({ "Right", 5 }) },
+  { key = "LeftArrow", mods = "CMD", action = act.AdjustPaneSize({ "Left", 15 }) },
+  { key = "RightArrow", mods = "CMD", action = act.AdjustPaneSize({ "Right", 15 }) },
   { key = "UpArrow", mods = "CMD", action = act.AdjustPaneSize({ "Up", 5 }) },
   { key = "DownArrow", mods = "CMD", action = act.AdjustPaneSize({ "Down", 5 }) },
 }
@@ -56,23 +65,25 @@ c.color_schemes = {
     brights = { "#676767", "#ff6d67", "#5ff967", "#fefb67", "#6871ff", "#ff76ff", "#5ffdff", "#fffefe" },
   },
 }
-c.window_frame = {
-  border_left_width = "1px",
-  border_right_width = "1px",
-  border_bottom_height = "1px",
-  border_top_height = "1px",
-
-  border_left_color = "#232323",
-  border_right_color = "#232323",
-  border_bottom_color = "#232323",
-  border_top_color = "#232323",
-}
 c.window_padding = { left = 4, right = 1, top = 3, bottom = 4 }
 c.window_frame = {
   font = wezterm.font({ family = "Roboto", weight = "Bold" }),
   font_size = 12.0,
   active_titlebar_bg = "#1a1a1a",
   inactive_titlebar_bg = "#222222",
+  border_left_width = "1px",
+  border_right_width = "1px",
+  border_bottom_height = "1px",
+  border_top_height = "1px",
+  border_left_color = "#333333",
+  border_right_color = "#333333",
+  border_bottom_color = "#333333",
+  border_top_color = "#333333",
+}
+
+c.inactive_pane_hsb = {
+  saturation = 1.0,
+  brightness = 0.7,
 }
 
 c.colors = {
