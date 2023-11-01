@@ -2,38 +2,11 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local c = wezterm.config_builder()
 
-local SUB_IDX = {
-  "₁",
-  "₂",
-  "₃",
-  "₄",
-  "₅",
-  "₆",
-  "₇",
-  "₈",
-  "₉",
-  "₁₀",
-  "₁₁",
-  "₁₂",
-  "₁₃",
-  "₁₄",
-  "₁₅",
-  "₁₆",
-  "₁₇",
-  "₁₈",
-  "₁₉",
-  "₂₀",
-}
-
-local SOLID_LEFT_ARROW = utf8.char(0xe0ba)
-local SOLID_LEFT_MOST = utf8.char(0x2588)
-local SOLID_RIGHT_ARROW = utf8.char(0xe0bc)
+local SUB_IDX = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", "₁₀" }
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local title = #tab.tab_title > 0 and tab.tab_title or tab.active_pane.title
-
   return {
-    -- { Foreground = { Color = "#444444" } },
     { Text = SUB_IDX[tab.tab_index + 1] },
   }
 end)
@@ -44,6 +17,7 @@ c.font = wezterm.font({
   family = "Liga SFMono Nerd Font",
   stretch = "Expanded",
   weight = 500,
+  harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
 
 c.use_cap_height_to_scale_fallback_fonts = true
@@ -62,6 +36,19 @@ c.skip_close_confirmation_for_processes_named = {}
 c.native_macos_fullscreen_mode = false
 c.disable_default_key_bindings = false
 
+c.selection_word_boundary = " \t\n{}[]()<>\"'`,;=^"
+
+c.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "NONE",
+    action = act.CompleteSelection("ClipboardAndPrimarySelection"),
+  },
+  { event = { Up = { streak = 1, button = "Left" } }, mods = "CMD", action = act.OpenLinkAtMouseCursor },
+}
+
+c.hyperlink_rules = { { regex = "\\b\\w+://[\\w.-]+\\.[a-z]+[\\w/#\\.]+\\b", format = "$0" } }
+
 c.keys = {
   -- Misc
   { key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
@@ -78,7 +65,7 @@ c.keys = {
 
   -- Move Tabs
   { key = "LeftArrow", mods = "SHIFT|CTRL", action = act.MoveTabRelative(-1) },
-  { key = "RightArrow", mods = "SHIFT|CTRL", action = act.MoveTabRelative(0) },
+  { key = "RightArrow", mods = "SHIFT|CTRL", action = act.MoveTabRelative(1) },
 
   -- Organize panes
   { key = "LeftArrow", mods = "SHIFT|CMD", action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
@@ -94,25 +81,29 @@ c.keys = {
 }
 c.send_composed_key_when_left_alt_is_pressed = true
 
-c.color_scheme = "Min"
+c.color_scheme = "Hej"
 c.color_schemes = {
-  ["Min"] = {
+  ["Hej"] = {
     tab_bar = { background = "#111111" },
     foreground = "#ffffff",
-    background = "#000010",
+    background = "#000015",
     cursor_bg = "#cccccc",
     ansi = { "#000000", "#ff4b2f", "#3ac33a", "#c7c400", "#4761da", "#ba57b8", "#00c5c7", "#c7c7c7" },
     brights = { "#676767", "#ff6d67", "#5ff967", "#fefb67", "#6871ff", "#ff76ff", "#5ffdff", "#fffefe" },
   },
 }
 c.colors = {
+  selection_fg = "#222222",
+  selection_bg = "#aaaaaa",
+
   tab_bar = {
     inactive_tab_edge = "#000000",
-    active_tab = { bg_color = "#121212", fg_color = "#313131" },
+    active_tab = { bg_color = "#121212", fg_color = "#555555" },
     inactive_tab = { bg_color = "#0e0e0e", fg_color = "#272727" },
   },
 }
 
+c.use_resize_increments = true
 c.window_padding = { left = 4, right = 1, top = 3, bottom = 4 }
 c.window_frame = {
   font = wezterm.font({ family = "Roboto", weight = "Bold" }),
@@ -129,9 +120,6 @@ c.window_frame = {
   border_top_color = "#333333",
 }
 
-c.inactive_pane_hsb = {
-  saturation = 1.0,
-  brightness = 0.7,
-}
+c.inactive_pane_hsb = { saturation = 1.0, brightness = 0.7 }
 
 return c
