@@ -108,8 +108,8 @@ c.color_schemes = {
 c.colors = {
   tab_bar = {
     inactive_tab_edge = "#000000",
-    active_tab = { bg_color = "#151515", fg_color = "#414141" },
-    inactive_tab = { bg_color = "#111111", fg_color = "#2a2a2a" },
+    active_tab = { bg_color = "#121212", fg_color = "#313131" },
+    inactive_tab = { bg_color = "#0e0e0e", fg_color = "#272727" },
   },
 }
 
