@@ -38,13 +38,33 @@ c.disable_default_key_bindings = false
 
 c.selection_word_boundary = " \t\n{}[]()<>\"'`,;=^"
 
+c.mouse_wheel_scrolls_tabs = false
 c.mouse_bindings = {
   {
     event = { Up = { streak = 1, button = "Left" } },
     mods = "NONE",
     action = act.CompleteSelection("ClipboardAndPrimarySelection"),
   },
-  { event = { Up = { streak = 1, button = "Left" } }, mods = "CMD", action = act.OpenLinkAtMouseCursor },
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "CMD",
+    action = act.OpenLinkAtMouseCursor,
+  },
+  {
+    event = { Down = { streak = 1, button = "Left" } },
+    mods = "CTRL",
+    action = act.Nop,
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = "NONE",
+    action = act.ScrollByCurrentEventWheelDelta,
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = "NONE",
+    action = act.ScrollByCurrentEventWheelDelta,
+  },
 }
 
 c.hyperlink_rules = { { regex = "\\b\\w+://[\\w.-]+\\.[a-z]+[\\w/#\\.]+\\b", format = "$0" } }
@@ -87,14 +107,16 @@ c.color_schemes = {
     tab_bar = { background = "#111111" },
     foreground = "#ffffff",
     background = "#000015",
-    cursor_bg = "#cccccc",
+    cursor_bg = "#dadada",
     ansi = { "#000000", "#ff4b2f", "#3ac33a", "#c7c400", "#4761da", "#ba57b8", "#00c5c7", "#c7c7c7" },
     brights = { "#676767", "#ff6d67", "#5ff967", "#fefb67", "#6871ff", "#ff76ff", "#5ffdff", "#fffefe" },
   },
 }
+c.cursor_thickness = "2px"
 c.colors = {
   selection_fg = "#222222",
   selection_bg = "#aaaaaa",
+  cursor_border = "#aaaaaa",
 
   tab_bar = {
     inactive_tab_edge = "#000000",
