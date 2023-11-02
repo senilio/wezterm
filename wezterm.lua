@@ -67,7 +67,7 @@ c.mouse_bindings = {
   },
 }
 
-c.hyperlink_rules = { { regex = "\\b\\w+://[\\w.-]+\\.[a-z]+[\\w/#\\.]+\\b", format = "$0" } }
+c.hyperlink_rules = { { regex = "\\b\\w+://[\\w.-]+\\.[a-z]+[\\w/#\\.-]+\\b", format = "$0" } }
 
 c.keys = {
   -- Misc
@@ -136,8 +136,8 @@ c.window_frame = {
   border_right_width = "1px",
   border_bottom_height = "1px",
   border_top_height = "1px",
-  border_left_color = "#1a1a1a",
-  border_right_color = "#1a1a1a",
+  border_left_color = "#333333",
+  border_right_color = "#333333",
   border_bottom_color = "#333333",
   border_top_color = "#333333",
 }
