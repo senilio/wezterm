@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local c = wezterm.config_builder()
+local emptystring = ""
 
 local SUB_IDX = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", "₁₀" }
 
@@ -20,6 +21,7 @@ c.font = wezterm.font({
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
 
+c.scrollback_lines = 20000
 c.use_cap_height_to_scale_fallback_fonts = true
 c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 c.font_size = 13.0
