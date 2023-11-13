@@ -112,7 +112,7 @@ c.color_schemes = {
     brights = { "#676767", "#ff6d67", "#5ff967", "#fefb67", "#6871ff", "#ff76ff", "#5ffdff", "#fffefe" },
   },
 }
-c.cursor_thickness = "2px"
+c.cursor_thickness = "5px"
 c.colors = {
   selection_fg = "#222222",
   selection_bg = "#aaaaaa",
@@ -130,7 +130,7 @@ c.window_padding = { left = 4, right = 1, top = 3, bottom = 4 }
 c.window_frame = {
   font = wezterm.font({ family = "Roboto", weight = "Bold" }),
   font_size = 11.0,
-  active_titlebar_bg = "#0c0c0c",
+  active_titlebar_bg = "#1a1a1a",
   inactive_titlebar_bg = "#222222",
   border_left_width = "1px",
   border_right_width = "1px",
