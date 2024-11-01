@@ -74,6 +74,14 @@ c.hyperlink_rules = { { regex = "\\b\\w+://[\\w.-]+\\.[a-z]+[\\w/#\\.-]+\\b", fo
 c.keys = {
 	-- Misc
 	{ key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
+	{
+		key = ",",
+		mods = "CMD",
+		action = wezterm.action.SpawnCommandInNewWindow({
+			args = { "/opt/homebrew/bin/fish", "-c", "cd ~/.config/wezterm ; vi wezterm.lua" },
+		}),
+		cwd = "~/.config/wezterm",
+	},
 
 	-- Splits
 	{ key = "d", mods = "CMD", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
@@ -109,12 +117,12 @@ c.color_schemes = {
 		tab_bar = { background = "#111111" },
 		foreground = "#ffffff",
 		background = "#000017",
+		cursor_fg = "#000000",
 		cursor_bg = "#dadada",
 		ansi = { "#000000", "#ff4b2f", "#3ac33a", "#c7c400", "#4761da", "#ba57b8", "#00c5c7", "#c7c7c7" },
 		brights = { "#676767", "#ff6d67", "#5ff967", "#fefb67", "#6871ff", "#ff76ff", "#5ffdff", "#fffefe" },
 	},
 }
-c.cursor_thickness = "5px"
 c.colors = {
 	selection_fg = "#222222",
 	selection_bg = "#aaaaaa",
