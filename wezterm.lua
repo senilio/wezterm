@@ -108,7 +108,7 @@ c.color_schemes = {
 	["Hej"] = {
 		tab_bar = { background = "#111111" },
 		foreground = "#ffffff",
-		background = "#000000",
+		background = "#000017",
 		cursor_bg = "#dadada",
 		ansi = { "#000000", "#ff4b2f", "#3ac33a", "#c7c400", "#4761da", "#ba57b8", "#00c5c7", "#c7c7c7" },
 		brights = { "#676767", "#ff6d67", "#5ff967", "#fefb67", "#6871ff", "#ff76ff", "#5ffdff", "#fffefe" },
@@ -119,6 +119,7 @@ c.colors = {
 	selection_fg = "#222222",
 	selection_bg = "#aaaaaa",
 	cursor_border = "#aaaaaa",
+	split = "#555555",
 
 	tab_bar = {
 		inactive_tab_edge = "#000000",
@@ -132,8 +133,8 @@ c.window_padding = { left = 4, right = 1, top = 3, bottom = 4 }
 c.window_frame = {
 	font = wezterm.font({ family = "SFMono Nerd Font", weight = "Light" }),
 	font_size = 11.0,
-	active_titlebar_bg = "#0c0c0c",
-	inactive_titlebar_bg = "#222222",
+	active_titlebar_bg = "#101010",
+	inactive_titlebar_bg = "#022222",
 	border_left_width = "1px",
 	border_right_width = "1px",
 	border_bottom_height = "1px",
@@ -144,6 +145,6 @@ c.window_frame = {
 	border_top_color = "#333333",
 }
 
-c.inactive_pane_hsb = { saturation = 1.0, brightness = 0.7 }
+c.inactive_pane_hsb = { saturation = 1, brightness = 0.8 }
 
 return c
