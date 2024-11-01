@@ -17,7 +17,7 @@ c.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 c.font = wezterm.font({
 	family = "Liga SFMono Nerd Font",
 	stretch = "Expanded",
-	weight = 600,
+	weight = 650,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
 
