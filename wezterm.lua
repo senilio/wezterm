@@ -82,6 +82,11 @@ c.keys = {
 		}),
 		cwd = "~/.config/wezterm",
 	},
+	{
+		key = "f",
+		mods = "ALT",
+		action = wezterm.action.TogglePaneZoomState,
+	},
 
 	-- Splits
 	{ key = "d", mods = "CMD", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
